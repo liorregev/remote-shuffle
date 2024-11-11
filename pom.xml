@@ -10,13 +10,23 @@
     <name>OAP Remote Shuffle Parent POM</name>
     <packaging>pom</packaging>
 
+    <distributionManagement>
+        <repository>
+            <id>jfrog</id>
+            <name>placer-artifactory-primary-0-snapshots</name>
+            <url>https://placer.jfrog.io/artifactory/placer-mvn-snapshot-local</url>
+        </repository>
+    </distributionManagement>
+
+
     <properties>
-        <scala.version>2.12.10</scala.version>
+        <scala.version>2.12.18</scala.version>
         <scala.binary.version>2.12</scala.binary.version>
         <java.version>1.8</java.version>
         <maven.compiler.source>${java.version}</maven.compiler.source>
         <maven.compiler.target>${java.version}</maven.compiler.target>
-        <spark.version>3.3.3</spark.version>
+        <spark.version>3.5.0</spark.version>
+        <slf4j.version>2.0.16</slf4j.version>
     </properties>
 
     <build>
@@ -208,6 +218,27 @@
     <dependencyManagement>
         <dependencies>
             <dependency>
+                <groupId>org.apache.logging.log4j</groupId>
+                <artifactId>log4j-core</artifactId>
+                <version>2.20.0</version>
+            </dependency>
+            <dependency>
+                <groupId>org.apache.logging.log4j</groupId>
+                <artifactId>log4j-slf4j-impl</artifactId>
+                <version>2.20.0</version>
+            </dependency>
+            <dependency>
+                <groupId>org.slf4j</groupId>
+                <artifactId>slf4j-api</artifactId>
+                <version>${slf4j.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.slf4j</groupId>
+                <artifactId>slf4j-ext</artifactId>
+                <version>${slf4j.version}</version>
+            </dependency>
+
+            <dependency>
                 <groupId>org.scala-lang</groupId>
                 <artifactId>scala-library</artifactId>
                 <version>${scala.version}</version>
@@ -227,7 +258,7 @@
             <dependency>
                 <groupId>org.scalatest</groupId>
                 <artifactId>scalatest_${scala.binary.version}</artifactId>
-                <version>3.2.3</version>
+                <version>3.2.16</version>
                 <scope>test</scope>
             </dependency>
             <dependency>

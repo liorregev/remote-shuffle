@@ -50,7 +50,7 @@ import java.util.LinkedHashMap;
 import java.util.List;
 
 @RunWith(PowerMockRunner.class)
-@PowerMockIgnore("javax.management.*")
+@PowerMockIgnore({"javax.management.*", "com.sun.org.apache.xerces.*", "javax.xml.*", "org.xml.*", "org.w3c.*"})
 @SuppressStaticInitializationFor("io.daos.obj.DaosObjClient")
 @PrepareForTest({DaosEventQueue.class, DaosReaderAsync.class})
 public class DaosReaderAsyncTest {
